@@ -1,0 +1,20 @@
+.rtc-talker-init-button .ant-avatar {
+  z-index: 100;
+  position: fixed;
+  width: 70px;
+  height: 70px;
+  border-radius: 45px;
+  cursor: pointer;
+  border: 2px solid #FFFFE0;
+  box-shadow: 0 3px 12px 2px rgba(0, 0, 0, 0.29);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  right: 20px;
+  bottom: 16px;
+}
+.rtc-talker-init-button .ant-avatar.ant-avatar-lg > * {
+  line-height: 80px;
+  font-size: 30px;
+}
+/*# sourceMappingURL=style.css.map */

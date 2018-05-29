@@ -1,0 +1,7 @@
+.talker-call-modal .talker-chat-area {
+  display: flex;
+  flex-direction: column;
+  min-width: 310px;
+  min-height: 420px;
+}
+/*# sourceMappingURL=style.css.map */

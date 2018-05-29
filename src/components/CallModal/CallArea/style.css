@@ -1,0 +1,8 @@
+.talker-call-modal .talker-call-area {
+  display: flex;
+  flex-direction: column;
+  min-width: 310px;
+  min-height: 420px;
+  background: linear-gradient(to bottom right, #20B2AA, #3CB371);
+}
+/*# sourceMappingURL=style.css.map */

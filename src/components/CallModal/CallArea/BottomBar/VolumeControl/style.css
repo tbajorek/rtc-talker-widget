@@ -1,0 +1,29 @@
+.talker-call-area .talker-volume {
+  display: flex;
+  flex-direction: row;
+  margin-left: 5px;
+  margin-top: 6px;
+}
+.talker-call-area .talker-volume .volume-button {
+  margin-left: 5px;
+}
+.talker-call-area .talker-volume .volume-slider {
+  width: 50px;
+  margin-left: 10px;
+}
+.talker-call-area .talker-volume .on {
+  color: #00a500;
+  border-color: #00a500;
+}
+.talker-call-area .talker-volume .on:hover {
+  color: #00d200;
+  border-color: #00d200;
+}
+.talker-call-area .talker-volume .off {
+  color: #a50001;
+  border-color: #a50001;
+}
+.talker-call-area .talker-volume .off:hover {
+  color: #d20001;
+}
+/*# sourceMappingURL=style.css.map */

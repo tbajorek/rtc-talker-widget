@@ -1,0 +1,7 @@
+.talker-chat-area .message-list {
+  flex: 1;
+  max-height: 388px;
+  overflow: auto;
+  padding-right: 4px;
+}
+/*# sourceMappingURL=style.css.map */

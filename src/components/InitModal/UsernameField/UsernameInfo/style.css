@@ -1,0 +1,18 @@
+.rtc-talker-username-info .ant-list-item-meta-title {
+  font-weight: bold;
+  padding-top: 8px;
+  font-size: 17px;
+}
+.rtc-talker-username-info {
+  display: flex;
+  align-items: center;
+}
+.rtc-talker-username-info .user-avatar {
+  border: 1px solid #d9d9d9;
+  background-color: #5F9EA0;
+}
+.rtc-talker-username-info .user-name {
+  margin-left: 10px;
+  font-weight: bold;
+}
+/*# sourceMappingURL=style.css.map */

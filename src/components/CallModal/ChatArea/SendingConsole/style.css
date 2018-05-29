@@ -1,0 +1,22 @@
+.talker-chat-area .sending-console {
+  display: flex;
+}
+.talker-chat-area .sending-console .input-prefix {
+  left: 0;
+}
+.talker-chat-area .sending-console .input-prefix .ant-btn {
+  border-radius: 0;
+}
+.talker-chat-area .sending-console .ant-input {
+  padding: 1px;
+  flex: 1;
+  border-radius: 0;
+  min-height: 32px !important;
+}
+.talker-chat-area .sending-console .input-suffix {
+  right: 0;
+}
+.talker-chat-area .sending-console .input-suffix .ant-btn {
+  border-radius: 0;
+}
+/*# sourceMappingURL=style.css.map */
