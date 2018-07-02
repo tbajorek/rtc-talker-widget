@@ -9,7 +9,7 @@ class Widget extends Component {
     super(props);
     const receiver = this.chooseReceiver();
     this.state = {
-      username: this.props.config.user.username,
+      username: '',
       user: this.props.config.user,
       initVisible: false,
       callVisible: false,
@@ -24,28 +24,28 @@ class Widget extends Component {
       receiver,
         connecting: false,
         volume: 50,
-        messagesShown: true,//@TODO
+        messagesShown: false,//@TODO
         writtenMessage: '',
         messages: [
             {
                 author: this.props.config.user,
-                content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+                content: 'Witam. Mam pytanie odnośnie państwa strony.',
                 date: '25-05-2018 8:25:56',
             },
             {
                 author: this.props.config.user,
-                content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                date: '25-05-2018 8:25:56',
+                content: 'Nie działa na niej wyszukiwanie produktów. Pojawia się błąd "Error 500".',
+                date: '25-05-2018 8:26:21',
             },
             {
                 author: receiver,
-                content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                date: '25-05-2018 8:25:56',
+                content: 'Dzień dobry, panie John. Zaraz postaram się panu pomóc.',
+                date: '25-05-2018 8:27:35',
             },
             {
                 author: this.props.config.user,
-                content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                date: '25-05-2018 8:25:56',
+                content: 'Bardzo dziękuję. Czekam na kontakt z pana strony.',
+                date: '25-05-2018 8:28:01',
             }
         ]
     };
@@ -124,6 +124,7 @@ class Widget extends Component {
                   callVisible: true,
                   callType: type,
                   receiver: this.chooseReceiver(),
+                  //connecting: true,
               });
           }
       });
@@ -180,6 +181,7 @@ class Widget extends Component {
             writtenMessage={this.state.writtenMessage}
             changeMessage={this.onChangeWrittenMessage}
             messages={this.state.messages}
+            connecting={this.state.connecting}
         />
       </div>
     );

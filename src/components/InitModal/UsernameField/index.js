@@ -4,27 +4,25 @@ import PropTypes from 'prop-types';
 import UsernameForm from './UsernameForm';
 import UsernameInfo from './UsernameInfo';
 
-const UsernameField = ({ user, username, ...props }) => {
-  if (user.username === null && user.avatar === null) {
-    return <UsernameForm {...props} username={username} />;
+const UsernameField = ({
+  username, avatar, changeUsername, usernameValidation, isGivenUser,
+}) => {
+  if (isGivenUser) {
+    return <UsernameInfo username={username} avatar={avatar} />;
   }
-  return <UsernameInfo user={user} />;
+  return <UsernameForm username={username} changeUsername={changeUsername} validation={usernameValidation} />;
 };
 
 UsernameField.defaultProps = {
-  username: null,
+  avatar: null,
 };
 
 UsernameField.propTypes = {
-  username: PropTypes.string,
-  user: PropTypes.shape({
-    id: PropTypes.oneOfType([
-      PropTypes.number,
-      PropTypes.string,
-    ]),
-    username: PropTypes.string,
-    avatar: PropTypes.string,
-  }),
+  username: PropTypes.string.isRequired,
+  avatar: PropTypes.string,
+  usernameValidation: PropTypes.bool.isRequired,
+  isGivenUser: PropTypes.bool.isRequired,
+  changeUsername: PropTypes.func.isRequired,
 };
 
 export default UsernameField;

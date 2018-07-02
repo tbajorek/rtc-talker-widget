@@ -1,17 +1,16 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import ImmutablePropTypes from 'react-immutable-proptypes';
 import { Avatar } from 'antd';
 import './style.less';
 
-import { User } from '../../../../../../propTypes/User';
 import getLettersFromName from '../../../../../../utilities/getLettersFromName';
 
 const MessageAvatar = ({ user }) => (
-  <Avatar className="message-avatar" src={user.avatar}>{!user.avatar ? getLettersFromName(user.username) : null}</Avatar>
+  <Avatar className="message-avatar" src={user.get('avatar')}>{!user.get('avatar') ? getLettersFromName(user.get('username')) : null}</Avatar>
 );
 
 MessageAvatar.propTypes = {
-  user: User.propType.isRequired,
+  user: ImmutablePropTypes.map.isRequired,
 };
 
 export default MessageAvatar;

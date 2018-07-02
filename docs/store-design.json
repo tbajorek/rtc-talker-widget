@@ -1,0 +1,43 @@
+{
+  "config": {},
+  "messages": {
+    "list": [],
+    "visible": false
+  },
+  "users": {
+    "user": null,
+    "receiver": null
+  },
+  "departments": [],
+  "channels": [],
+  "widget": {
+    "button": {
+      "icon": "solution",
+      "color": "rgb(255, 239, 206)",
+      "backgroundColor": "rgb(216, 68, 9)",
+      "shape": "circle",
+      "notifyNumber": 0
+    },
+    "state": "init",
+    "visible": false,
+    "init": {
+      "username": "",
+      "avatar": null,
+      "department": null,
+    },
+    "call": {
+      "muted": {
+        "audio": false,
+        "video": false
+      },
+      "type": null,
+      "connecting": false,
+      "volume": 50,
+      "writtenMessage": "",
+    },
+    "rate": {
+      "rate": 0,
+      "comment": ""
+    }
+  }
+}

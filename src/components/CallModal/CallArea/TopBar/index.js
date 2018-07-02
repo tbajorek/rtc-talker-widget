@@ -3,11 +3,15 @@ import PropTypes from 'prop-types';
 import ChatButton from './ChatButton';
 import './style.less';
 
-const TopBar = ({ ...props }) => (
+const TopBar = ({ connecting, ...props }) => (
   <div className="talker-call-menu-top">
     <div className="menu-filler" />
-    <ChatButton {...props} />
+    { !connecting ? <ChatButton {...props} /> : null }
   </div>
 );
+
+TopBar.propTypes = {
+  connecting: PropTypes.bool.isRequired,
+};
 
 export default TopBar;

@@ -1,10 +1,22 @@
 .talker-call-modal {
+  display: flex;
+
+  .rtc-talker-call-modal {
+    width: auto !important;
+    margin: auto;
+    position: static;
+  }
 
   .ant-modal-body {
     padding: 5px;
   }
+}
 
-  .talker-call-modal-body {
-    display: flex;
+@media (min-width: 640px) {
+  .talker-call-modal {
+    .talker-call-modal-body {
+      display: flex;
+    }
   }
 }
+

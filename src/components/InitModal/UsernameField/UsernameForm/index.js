@@ -5,12 +5,12 @@ import { Input, Icon, Form } from 'antd';
 const FormItem = Form.Item;
 
 const UsernameForm = ({
-  username, changeUsername, clearUsername, validation,
+  username, changeUsername, validation,
 }) => {
   const childProps = {
     placeholder: 'Przedstaw się',
     prefix: <Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />,
-    suffix: username ? <Icon type="close-circle" onClick={clearUsername} style={{ cursor: 'pointer' }} /> : null,
+    suffix: username ? <Icon type="close-circle" onClick={e => changeUsername('')} style={{ cursor: 'pointer' }} /> : null,
     value: username,
     onChange: e => changeUsername(e.target.value),
     ref: node => (node !== null ? node.focus() : null),
@@ -37,7 +37,6 @@ UsernameForm.defaultProps = {
 UsernameForm.propTypes = {
   username: PropTypes.string,
   changeUsername: PropTypes.func.isRequired,
-  clearUsername: PropTypes.func.isRequired,
   validation: PropTypes.bool,
 };
 

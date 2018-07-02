@@ -1,35 +1,35 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ImmutablePropTypes from 'react-immutable-proptypes';
 import TopBar from './TopBar';
 import MainPart from './MainPart';
 import BottomBar from './BottomBar';
 
 import './style.less';
-import { User } from '../../../propTypes/User';
 
 const CallArea = ({
-  receiver, connecting, messagesShown, toggleMessageBox, volume, mutedAudio, mutedVideo, disabledAudio, changeVolume, changeMuteAudio, changeMuteVideo, endCall,
+  callType, receiver, connecting, messagesShown, toggleMessageBox, volume, mutedAudio, mutedVideo,
+  setVolume, setMuteAudio, setMuteVideo, endCall,
 }) => (
   <div className="talker-call-area">
-    <TopBar messagesShown={messagesShown} toggleMessageBox={toggleMessageBox} />
-    <MainPart connecting={connecting} receiver={receiver} />
-    <BottomBar volume={volume} mutedAudio={mutedAudio} mutedVideo={mutedVideo} disabledAudio={disabledAudio} changeVolume={changeVolume} changeMuteAudio={changeMuteAudio} changeMuteVideo={changeMuteVideo} endCallendCall={endCall} />
+    <TopBar messagesShown={messagesShown} toggleMessageBox={toggleMessageBox} connecting={connecting} />
+    <MainPart callType={callType} connecting={connecting} mutedVideo={mutedVideo} receiver={receiver} />
+    <BottomBar callType={callType} volume={volume} mutedAudio={mutedAudio} mutedVideo={mutedVideo} changeVolume={setVolume} changeMuteAudio={setMuteAudio} changeMuteVideo={setMuteVideo} endCall={() => endCall(connecting)} />
   </div>
 );
 
 CallArea.propTypes = {
-  user: User.propType.isRequired,
-  receiver: User.propType.isRequired,
+  callType: PropTypes.string.isRequired,
+  receiver: ImmutablePropTypes.map.isRequired,
   connecting: PropTypes.bool.isRequired,
   messagesShown: PropTypes.bool.isRequired,
   toggleMessageBox: PropTypes.func.isRequired,
   volume: PropTypes.number.isRequired,
-  disabledAudio: PropTypes.bool.isRequired,
   mutedVideo: PropTypes.bool.isRequired,
   mutedAudio: PropTypes.bool.isRequired,
-  changeVolume: PropTypes.func.isRequired,
-  changeMuteAudio: PropTypes.func.isRequired,
-  changeMuteVideo: PropTypes.func.isRequired,
+  setVolume: PropTypes.func.isRequired,
+  setMuteAudio: PropTypes.func.isRequired,
+  setMuteVideo: PropTypes.func.isRequired,
   endCall: PropTypes.func.isRequired,
 };
 

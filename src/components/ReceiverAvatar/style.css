@@ -1,7 +1,9 @@
-.talker-call-area .avatar-field {
+.talker-call-area .avatar-field,
+.rtc-talker-rate-modal .avatar-field {
   margin: auto;
 }
-.talker-call-area .call-avatar {
+.talker-call-area .call-avatar,
+.rtc-talker-rate-modal .call-avatar {
   width: 100px;
   height: 100px;
   border-radius: 65px;
@@ -10,12 +12,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: auto;
 }
-.talker-call-area .call-avatar.ant-avatar-lg > * {
+.talker-call-area .call-avatar.ant-avatar-lg > *,
+.rtc-talker-rate-modal .call-avatar.ant-avatar-lg > * {
   line-height: 80px;
   font-size: 30px;
 }
-.talker-call-area .connecting-text {
+.talker-call-area .description-text,
+.rtc-talker-rate-modal .description-text {
   display: block;
   width: 100%;
   text-align: center;

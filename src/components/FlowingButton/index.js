@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Tooltip, Avatar, Badge } from 'antd';
+import { Avatar, Badge } from 'antd';
 import './style.less';
 
 const FlowingButton = ({
-  icon, color, backgroundColor, notifyNumber, shape, onClick,
+  icon, color, backgroundColor, notifyNumber, shape, setVisible,
 }) => (
   <div className="rtc-talker-init-button">
-    <Badge count={notifyNumber} onClick={onClick} >
+    <Badge count={notifyNumber} onClick={() => setVisible(true)} >
       <Avatar style={{ color, backgroundColor }} shape={shape} icon={icon} size="large" />
     </Badge>
   </div>
@@ -27,7 +27,7 @@ FlowingButton.propTypes = {
   backgroundColor: PropTypes.string,
   shape: PropTypes.oneOf(['circle', 'square']),
   notifyNumber: PropTypes.number,
-  onClick: PropTypes.func.isRequired,
+  setVisible: PropTypes.func.isRequired,
 };
 
 export default FlowingButton;

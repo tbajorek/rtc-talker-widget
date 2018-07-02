@@ -1,6 +1,7 @@
 .talker-chat-area {
   .sending-console {
       display: flex;
+      align-items: flex-end;
 
     .input-prefix {
       left: 0;
@@ -20,6 +21,18 @@
       right: 0;
       .ant-btn {
         border-radius: 0;
+      }
+    }
+
+    .send-message-button {
+      background-color: #00816a;
+      color: #dffffb;
+      border-color: #0b5749;
+      width: 33px;
+
+      &:hover {
+        font-weight: bold;
+        border-color: #0bad90;
       }
     }
   }

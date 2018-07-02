@@ -8,20 +8,6 @@
 .talker-chat-area .single-message .main {
   display: flex;
 }
-.talker-chat-area .single-message .main .message-content {
-  font-size: 12px;
-  flex: 1;
-  border-radius: 3px;
-  padding: 2px;
-}
-.talker-chat-area .single-message .main .message-content.incoming {
-  background-color: #008B8B;
-  color: #FEFEFE;
-}
-.talker-chat-area .single-message .main .message-content.outgoing {
-  background-color: #7AE6C3;
-  color: #003e00;
-}
 .talker-chat-area .single-message .footer {
   display: flex;
 }

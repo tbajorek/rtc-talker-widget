@@ -1,46 +1,56 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Modal, Col } from 'antd';
+import ImmutablePropTypes from 'react-immutable-proptypes';
+import { Modal } from 'antd';
 
 import ChatArea from './ChatArea';
 import CallArea from './CallArea';
-import { User } from '../../propTypes/User';
 import './style.less';
 
 const CallModal = ({
-  visible, user, receiver, onMinimize, messagesShown, toggleMessageBox, writtenMessage, changeMessage, messages, ...props
+  callType, visible, users, messagesShown, connecting, volume, writtenMessage, messages, mutedAudio, mutedVideo,
+  setVolume, setMessagesVisibility, setWrittenMessage, setVisible, setMuteAudio, setMuteVideo, sendMessage, endCall,
 }) => (
   <Modal
-    title={`Rozmowa z ${receiver.username}`}
+    className="rtc-talker-call-modal"
+    title={`Rozmowa z ${users.get('receiver').get('username')}`}
     visible={visible}
-    onCancel={onMinimize}
+    onCancel={() => setVisible(false)}
     footer={null}
     wrapClassName="talker-call-modal"
   >
     {
       visible ?
         <div className="talker-call-modal-body">
-          <CallArea user={user} receiver={receiver} messagesShown={messagesShown} toggleMessageBox={toggleMessageBox} />
-          { messagesShown ? <ChatArea user={user} receiver={receiver} writtenMessage={writtenMessage} changeMessage={changeMessage} messages={messages}/> : null }
+          { ['video', 'audio'].indexOf(callType) >= 0 ? <CallArea callType={callType} receiver={users.get('receiver')} messagesShown={messagesShown} toggleMessageBox={setMessagesVisibility} connecting={connecting} volume={volume} setVolume={setVolume} mutedAudio={mutedAudio} mutedVideo={mutedVideo} setMuteAudio={setMuteAudio} setMuteVideo={setMuteVideo} endCall={endCall} /> : null }
+          { messagesShown || callType === 'chat' ? <ChatArea users={users} writtenMessage={writtenMessage} changeMessage={setWrittenMessage} messages={messages} sendMessage={sendMessage} /> : null }
         </div> : null
   }
   </Modal>
 );
 
-CallModal.defaultProps = {
-  visible: false,
-  receiver: {},
-};
-
 CallModal.propTypes = {
-  visible: PropTypes.bool,
-  user: User.propType.isRequired,
-  receiver: User.propType,
-  onMinimize: PropTypes.func.isRequired,
-  toggleMessageBox: PropTypes.func.isRequired,
+  callType: PropTypes.string.isRequired,
+  visible: PropTypes.bool.isRequired,
+  users: ImmutablePropTypes.contains({
+    user: ImmutablePropTypes.map.isRequired,
+    receiver: ImmutablePropTypes.map.isRequired,
+  }).isRequired,
   messagesShown: PropTypes.bool.isRequired,
+  connecting: PropTypes.bool.isRequired,
+  volume: PropTypes.number.isRequired,
   writtenMessage: PropTypes.string.isRequired,
-  changeMessage: PropTypes.func.isRequired,
+  messages: ImmutablePropTypes.orderedSet.isRequired,
+  mutedAudio: PropTypes.bool.isRequired,
+  mutedVideo: PropTypes.bool.isRequired,
+  setVolume: PropTypes.func.isRequired,
+  setMessagesVisibility: PropTypes.func.isRequired,
+  setWrittenMessage: PropTypes.func.isRequired,
+  setVisible: PropTypes.func.isRequired,
+  setMuteAudio: PropTypes.func.isRequired,
+  setMuteVideo: PropTypes.func.isRequired,
+  sendMessage: PropTypes.func.isRequired,
+  endCall: PropTypes.func.isRequired,
 };
 
 export default CallModal;

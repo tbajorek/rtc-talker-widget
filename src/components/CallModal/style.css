@@ -1,7 +1,17 @@
+.talker-call-modal {
+  display: flex;
+}
+.talker-call-modal .rtc-talker-call-modal {
+  width: auto !important;
+  margin: auto;
+  position: static;
+}
 .talker-call-modal .ant-modal-body {
   padding: 5px;
 }
-.talker-call-modal .talker-call-modal-body {
-  display: flex;
+@media (min-width: 640px) {
+  .talker-call-modal .talker-call-modal-body {
+    display: flex;
+  }
 }
 /*# sourceMappingURL=style.css.map */

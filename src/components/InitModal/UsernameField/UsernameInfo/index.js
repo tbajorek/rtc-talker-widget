@@ -1,17 +1,23 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Avatar } from 'antd';
 import './style.less';
-import { User } from '../../../../propTypes/User';
 import getLettersFromName from '../../../../utilities/getLettersFromName';
 
-const UsernameInfo = ({ user }) => (
+const UsernameInfo = ({ username, avatar }) => (
   <div className="rtc-talker-username-info">
-    <Avatar className="user-avatar" size="large" src={user.avatar}>{!user.avatar ? getLettersFromName(user.username) : null}</Avatar>
-    <div className="user-name">{user.username}</div>
+    <Avatar className="user-avatar" size="large" src={avatar}>{!avatar ? getLettersFromName(username) : null}</Avatar>
+    <div className="user-name">{username}</div>
   </div>
 );
+
+UsernameInfo.defaultProps = {
+  avatar: null,
+};
+
 UsernameInfo.propTypes = {
-  user: User.propType.isRequired,
+  username: PropTypes.string.isRequired,
+  avatar: PropTypes.string,
 };
 
 export default UsernameInfo;

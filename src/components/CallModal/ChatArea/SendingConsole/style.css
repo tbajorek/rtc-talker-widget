@@ -1,5 +1,6 @@
 .talker-chat-area .sending-console {
   display: flex;
+  align-items: flex-end;
 }
 .talker-chat-area .sending-console .input-prefix {
   left: 0;
@@ -18,5 +19,15 @@
 }
 .talker-chat-area .sending-console .input-suffix .ant-btn {
   border-radius: 0;
+}
+.talker-chat-area .sending-console .send-message-button {
+  background-color: #00816a;
+  color: #dffffb;
+  border-color: #0b5749;
+  width: 33px;
+}
+.talker-chat-area .sending-console .send-message-button:hover {
+  font-weight: bold;
+  border-color: #0bad90;
 }
 /*# sourceMappingURL=style.css.map */

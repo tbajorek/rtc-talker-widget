@@ -4,22 +4,24 @@ import { Tooltip, Button, Slider } from 'antd';
 import './style.less';
 
 const VolumeControl = ({
-  volume, mutedAudio, mutedVideo, disabledAudio, changeVolume, changeMuteAudio, changeMuteVideo,
+  callType, volume, mutedAudio, mutedVideo, changeVolume, changeMuteAudio, changeMuteVideo,
 }) => (
   <div className="talker-volume">
-    <Tooltip title={`${mutedVideo ? 'Wyłącz' : 'Włącz'} wideo`}>
-      <Button className={`video-button ${mutedVideo ? 'off' : 'on'}`} icon="eye-o" onClick={changeMuteVideo} />
+    { callType === 'video' ?
+      <Tooltip title={`${mutedVideo ? 'Włącz' : 'Wyłącz'} wideo`}>
+        <Button className={`video-button ${mutedVideo ? 'off' : 'on'}`} icon="eye-o" onClick={() => changeMuteVideo(!mutedVideo)} />
+      </Tooltip>
+        : null}
+    <Tooltip title={`${mutedAudio ? 'Włącz' : 'Wyłącz'} audio`}>
+      <Button className={`volume-button ${mutedAudio ? 'off' : 'on'}`} icon="sound" onClick={() => changeMuteAudio(!mutedAudio)} />
     </Tooltip>
-    <Tooltip title={`${mutedAudio ? 'Wyłącz' : 'Włącz'} audio`}>
-      <Button disabled={disabledAudio} className={`volume-button ${mutedAudio ? 'off' : 'on'}`} icon="sound" onClick={changeMuteAudio} />
-    </Tooltip>
-    <Slider className="volume-slider" min={0} max={100} disabled={disabledAudio} onChange={changeVolume} value={volume} />
+    <Slider className="volume-slider" min={0} max={100} disabled={mutedAudio} onChange={changeVolume} value={volume} />
   </div>
 );
 
 VolumeControl.propTypes = {
+  callType: PropTypes.string.isRequired,
   volume: PropTypes.number.isRequired,
-  disabledAudio: PropTypes.bool.isRequired,
   mutedVideo: PropTypes.bool.isRequired,
   mutedAudio: PropTypes.bool.isRequired,
   changeVolume: PropTypes.func.isRequired,

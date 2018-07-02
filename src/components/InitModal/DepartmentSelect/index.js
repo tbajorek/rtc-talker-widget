@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ImmutablePropTypes from 'react-immutable-proptypes';
 import { Select, Form } from 'antd';
 import './style.less';
 
@@ -10,7 +11,7 @@ const Option = Select.Option;
 const DepartmentSelect = ({
   departments, selectedDepartment, changeDepartment, validation,
 }) => {
-  const options = Object.entries(departments).map(([id, name]) => <Option key={id} value={id}>{name}</Option>);
+  const options = Object.entries(departments.toObject()).map(([id, name]) => <Option key={id} value={id}>{name}</Option>);
   const childProps = {
     showSearch: true,
     style: {
@@ -43,19 +44,17 @@ const DepartmentSelect = ({
 };
 
 DepartmentSelect.defaultProps = {
-  departments: {},
   selectedDepartment: null,
-  validation: true,
 };
 
 DepartmentSelect.propTypes = {
-  departments: PropTypes.object,
+  departments: ImmutablePropTypes.map.isRequired,
   selectedDepartment: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
   ]),
   changeDepartment: PropTypes.func.isRequired,
-  validation: PropTypes.bool,
+  validation: PropTypes.bool.isRequired,
 };
 
 export default DepartmentSelect;

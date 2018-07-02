@@ -5,7 +5,7 @@ import './style.less';
 
 const ChatButton = ({ messagesShown, toggleMessageBox }) => (
   <Tooltip title={`${messagesShown ? 'Zwiń' : 'Pokaż'} panel wiadomości`}>
-    <Button icon="message" className={`${messagesShown ? 'off' : 'on'} chat-button`} onClick={toggleMessageBox} />
+    <Button icon="message" className={`${messagesShown ? 'off' : 'on'} chat-button`} onClick={() => toggleMessageBox(!messagesShown)} />
   </Tooltip>
 );
 
