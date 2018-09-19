@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ImmutablePropTypes from 'react-immutable-proptypes';
 import { Modal } from 'antd';
 
 import UsernameField from './UsernameField';
@@ -8,24 +7,20 @@ import DepartmentSelect from './DepartmentSelect';
 import CallOptions from './CallOptions';
 
 const InitModal = ({
-  userId, username, avatar, visible, channels, selectedDepartment, departments, usernameValidation,
-  departmentValidation, isGivenUser, setUsername, setDepartment, setVisible, startCall, setCallType,
+  username, avatar, visible, channels, selectedDepartment, departments, usernameValidation,
+  departmentValidation, isGivenUser, setUsername, setDepartment, setVisible, startCall
 }) => (
   <Modal
     className="rtc-talker-init-modal"
     title="Rozpocznij rozmowę"
     visible={visible}
     onCancel={() => setVisible(false)}
-    footer={<CallOptions
+    footer={channels.length ? <CallOptions
       channels={channels}
       chooseCallType={(type) => {
-        if (!isGivenUser) {
-            startCall(type, username, selectedDepartment);
-        } else {
-          setCallType(type);
-        }
+          startCall(type, username, selectedDepartment);
     }}
-    />}
+    /> : null}
   >
     <UsernameField
       username={username}
@@ -35,7 +30,7 @@ const InitModal = ({
       isGivenUser={isGivenUser}
     />
     {
-          departments.size ?
+          departments.length > 1 ?
             <DepartmentSelect
               departments={departments}
               selectedDepartment={selectedDepartment}
@@ -52,10 +47,6 @@ InitModal.defaultProps = {
 };
 
 InitModal.propTypes = {
-  userId: PropTypes.oneOfType([
-    PropTypes.number,
-    PropTypes.string,
-  ]).isRequired,
   username: PropTypes.string.isRequired,
   avatar: PropTypes.string,
   visible: PropTypes.bool.isRequired,
@@ -63,8 +54,8 @@ InitModal.propTypes = {
     PropTypes.number,
     PropTypes.string,
   ]).isRequired,
-  channels: ImmutablePropTypes.list.isRequired,
-  departments: ImmutablePropTypes.map.isRequired,
+  channels: PropTypes.array.isRequired,
+  departments: PropTypes.array.isRequired,
   usernameValidation: PropTypes.bool.isRequired,
   departmentValidation: PropTypes.bool.isRequired,
   isGivenUser: PropTypes.bool.isRequired,
@@ -72,7 +63,6 @@ InitModal.propTypes = {
   startCall: PropTypes.func.isRequired,
   setUsername: PropTypes.func.isRequired,
   setDepartment: PropTypes.func.isRequired,
-  setCallType: PropTypes.func.isRequired,
 };
 
 export default InitModal;

@@ -8,9 +8,20 @@
 .talker-centered-part .local-video {
   position: absolute;
   right: 0;
-  bottom: -8px;
+  bottom: -37px;
   background-color: black;
-  width: 200px;
+  width: 150px;
+  max-height: 100px;
   margin: 0 8px;
+}
+.talker-centered-part .local-video.muted {
+  display: none;
+}
+.talker-centered-part .remote-video {
+  max-width: 310px;
+  background-color: #004d3a;
+}
+.talker-centered-part .remote-video.muted {
+  display: none;
 }
 /*# sourceMappingURL=style.css.map */

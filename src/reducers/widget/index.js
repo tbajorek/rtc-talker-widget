@@ -3,7 +3,7 @@ import button from './button';
 import init from './init';
 import call from './call';
 import rate from './rate';
-import { SET_STATE, SET_VISIBLE } from '../../actions/widget';
+import {SET_STATE, SET_VISIBLE} from '../../actions/widget';
 
 const widgetState = (state = 'init', action) => {
   switch (action.type) {
@@ -23,8 +23,9 @@ const visible = (state = false, action) => {
   }
 };
 
+
 export default combineReducers({
-  button, state: widgetState, visible, init, call, rate,
+  button, state: widgetState, visible, init, call, rate
 });
 
 export const getWidgetState = state => state.widget.state;

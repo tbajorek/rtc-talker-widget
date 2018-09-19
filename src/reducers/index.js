@@ -3,8 +3,9 @@ import config from './config';
 import users from './users';
 import messages from './messages';
 import widget from './widget';
-import channels from './channels';
-import departments from './departments';
+import talk from './talk';
 
-export default combineReducers({ config, users, messages, widget, channels, departments });
+import availability from './availability';
+
+export default combineReducers({ config, users, messages, widget, availability, talk });
 

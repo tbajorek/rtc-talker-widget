@@ -4,13 +4,18 @@ import { Avatar } from 'antd';
 import './style.less';
 
 import getLettersFromName from '../../../../../../utilities/getLettersFromName';
+import PropTypes from "prop-types";
 
 const MessageAvatar = ({ user }) => (
-  <Avatar className="message-avatar" src={user.get('avatar')}>{!user.get('avatar') ? getLettersFromName(user.get('username')) : null}</Avatar>
+  <Avatar className="message-avatar" src={user.avatar}>{!user.avatar ? getLettersFromName(`${user.name} ${user.surname}`) : null}</Avatar>
 );
 
 MessageAvatar.propTypes = {
-  user: ImmutablePropTypes.map.isRequired,
+  user: PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      surname: PropTypes.string.isRequired,
+      avatar: PropTypes.string
+  }).isRequired,
 };
 
 export default MessageAvatar;

@@ -32,7 +32,11 @@ const MessageContent = ({
 };
 
 MessageContent.propTypes = {
-  author: ImmutablePropTypes.map.isRequired,
+  author: PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      surname: PropTypes.string.isRequired,
+      avatar: PropTypes.string
+  }).isRequired,
   content: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
 };

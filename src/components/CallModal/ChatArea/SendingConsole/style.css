@@ -30,4 +30,7 @@
   font-weight: bold;
   border-color: #0bad90;
 }
+.talker-chat-area .sending-console #fileInput {
+  display: none;
+}
 /*# sourceMappingURL=style.css.map */

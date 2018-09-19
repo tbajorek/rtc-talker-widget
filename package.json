@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "start": "webpack-dev-server --mode development --open -d",
+    "start": "webpack-dev-server --mode development --open -d --host 0.0.0.0",
     "build": "webpack --mode production",
     "test": "jest"
   },
@@ -12,6 +12,8 @@
   "license": "ISC",
   "dependencies": {
     "antd": "^3.5.3",
+    "app-root-path": "^2.1.0",
+    "cross-fetch": "^2.2.2",
     "emote-icons": "^1.0.3",
     "immutable": "^3.8.2",
     "moment": "^2.22.2",
@@ -31,7 +33,10 @@
     "redux-actions": "^2.4.0",
     "redux-thunk": "^2.2.0",
     "selector-lite": "^0.1.1",
+    "tbrtc-client": "^0.0.2",
+    "tbrtc-common": "^0.0.3",
     "underscore": "^1.9.0",
+    "url-join": "^4.0.0",
     "uuid": "^3.2.1"
   },
   "devDependencies": {
@@ -45,6 +50,7 @@
     "css-loader": "^0.28.11",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
+    "error-overlay-webpack-plugin": "^0.1.5",
     "eslint-config-airbnb": "^16.1.0",
     "history": "^4.7.2",
     "html-webpack-plugin": "^3.2.0",
@@ -53,8 +59,9 @@
     "less-loader": "^4.1.0",
     "regenerator-runtime": "^0.11.1",
     "style-loader": "^0.21.0",
-    "webpack": "^4.8.3",
-    "webpack-cli": "^2.1.4"
+    "webpack": "^4.17.1",
+    "webpack-cli": "^2.1.4",
+    "webpack-dev-server": "^3.1.5"
   },
   "jest": {
     "moduleFileExtensions": [

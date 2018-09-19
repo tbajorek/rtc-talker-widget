@@ -8,6 +8,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <style>
+        body {
+            background-color: grey;
+        }
         /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
         .row.content {height: 1500px}
 
@@ -34,7 +37,7 @@
         }
     </style>
 </head>
-<body>
+<body style="background-color: grey;">
 
 <noscript>
     You need to enable JavaScript to run this app.
@@ -130,21 +133,16 @@
 <script>
     RtcTalker.initWidget({
         place: '#widget',
-        /*user: {
-            id: '123',
-            username: 'John Stone',
+        user: {
+            name: 'John',
+            surname: 'Stone',
             avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png'
-        },*/
+        },
         channels: ['video', 'audio', 'chat'],
-        //department: '12',
-        /*departments: {
-            "5": "Zarząd",
-            "12": "Księgowość",
-            "15": "Obsługa Klienta",
-        },*/
         button: {
             shape: 'square',
-        }
+        },
+        companyId: 'ce561ebf-70d6-4f55-88bf-7455fa51decd'
     });
 </script>
 

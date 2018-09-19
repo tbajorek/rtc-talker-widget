@@ -8,7 +8,7 @@ import './style.less';
 const SingleMessage = ({
   currentUser, author, content, date,
 }) => {
-  const messageType = currentUser.get('id') === author.get('id') ? 'outgoing' : 'incoming';
+  const messageType = currentUser.id === author.id ? 'outgoing' : 'incoming';
 
   return (
     <div className="single-message">
@@ -22,8 +22,16 @@ const SingleMessage = ({
 };
 
 SingleMessage.propTypes = {
-  currentUser: ImmutablePropTypes.map.isRequired,
-  author: ImmutablePropTypes.map.isRequired,
+  currentUser: PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      surname: PropTypes.string.isRequired,
+      avatar: PropTypes.string
+  }),
+  author: PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      surname: PropTypes.string.isRequired,
+      avatar: PropTypes.string
+  }),
   content: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
 };

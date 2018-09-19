@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import SingleMessage from './SingleMessage';
 import './style.less';
@@ -6,9 +7,9 @@ import './style.less';
 const MessageList = ({ users, messages }) => {
   let key = 0;
   const htmlMessages = messages.toArray().map((message) => {
-    const author = users.get('user').get('id') === message.get('authorId') ? users.get('user') : users.get('receiver');
+    const author = users.user.id === message.get('authorId') ? users.user : users.receiver;
     return (<SingleMessage
-      currentUser={users.get('user')}
+      currentUser={users.user}
       author={author}
       content={message.get('content')}
       date={message.get('date')}
@@ -24,9 +25,17 @@ const MessageList = ({ users, messages }) => {
 export default MessageList;
 
 MessageList.propTypes = {
-  users: ImmutablePropTypes.contains({
-    user: ImmutablePropTypes.map.isRequired,
-    receiver: ImmutablePropTypes.map.isRequired,
+  users: PropTypes.shape({
+    user: PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        surname: PropTypes.string.isRequired,
+        avatar: PropTypes.string
+    }).isRequired,
+    receiver: PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        surname: PropTypes.string.isRequired,
+        avatar: PropTypes.string
+    }).isRequired,
   }).isRequired,
   messages: ImmutablePropTypes.orderedSet.isRequired,
 };

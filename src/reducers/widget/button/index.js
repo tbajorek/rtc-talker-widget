@@ -54,8 +54,8 @@ const button = (state = defaultState, action) => {
 
 export default button;
 
-export const getIcon = state => state.widget.button.icon;
-export const getColor = state => state.widget.button.color;
-export const getBackgroundColor = state => state.widget.button.backgroundColor;
-export const getShape = state => state.widget.button.shape;
-export const getNotifyNumber = state => state.widget.button.notifyNumber;
+export const getIcon = state => state.widget.button.get('icon');
+export const getColor = state => state.widget.button.get('color');
+export const getBackgroundColor = state => state.widget.button.get('backgroundColor');
+export const getShape = state => state.widget.button.get('shape');
+export const getNotifyNumber = state => state.widget.button.get('notifyNumber');

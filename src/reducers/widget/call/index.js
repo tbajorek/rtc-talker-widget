@@ -1,6 +1,15 @@
 import { Map } from 'immutable';
 
-import { SET_CALL_TYPE, SET_CONNECTING, SET_VOLUME, SET_WRITTEN_MESSAGE, SET_MUTE_AUDIO, SET_MUTE_VIDEO, RESET_CALL } from '../../../actions/widget/call';
+import {
+    SET_CALL_TYPE,
+    SET_CONNECTING,
+    SET_VOLUME,
+    SET_WRITTEN_MESSAGE,
+    SET_MUTE_AUDIO,
+    SET_MUTE_VIDEO,
+    RESET_CALL,
+    SET_INITIALIZING_CALL
+} from '../../../actions/widget/call';
 
 const defaultState = Map({
   type: null,
@@ -15,6 +24,8 @@ const defaultState = Map({
 
 const call = (state = defaultState, action) => {
   switch (action.type) {
+    case SET_INITIALIZING_CALL:
+        return state.set('initializing', action.payload.initializing);
     case SET_CALL_TYPE:
       return state.set('type', action.payload.type);
     case SET_CONNECTING:
@@ -40,6 +51,7 @@ const call = (state = defaultState, action) => {
 export default call;
 
 export const getCallType = state => state.widget.call.get('type');
+export const isInitializing = state => state.widget.call.get('initializing');
 export const isConnecting = state => state.widget.call.get('connecting');
 export const getVolume = state => state.widget.call.get('volume');
 export const getWrittenMessage = state => state.widget.call.get('writtenMessage');

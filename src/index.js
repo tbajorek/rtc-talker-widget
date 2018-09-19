@@ -7,6 +7,8 @@ import _ from 'underscore';
 import initStore from './initStore';
 import { loadConfig } from './actions/config';
 import Widget from './containers/Widget';
+import defaultConfig from './default.config';
+import {checkDepartments} from "./actions/availability";
 
 const uuidv4 = require('uuid/v4');
 moment.locale('pl');
@@ -16,7 +18,6 @@ moment.locale('pl');
 // registerServiceWorker();
 
 const store = initStore();
-
 const MainContainer = () => (
   <Provider store={store}>
     <Widget />
@@ -25,20 +26,11 @@ const MainContainer = () => (
 
 window.RtcTalker = {
   initWidget: (config) => {
-    const newConfig = _.defaults(config, {
-      user: {
-        id: uuidv4(),
-        username: null,
-        avatar: null,
-      },
-      place: '#rtc-talker-widget',
-      channels: ['email'],
-      departments: {},
-      department: null,
-    });
+    const newConfig = _.defaults(config, defaultConfig);
     const element = Selector.find(document, config.place, true);
     if (element !== null && typeof element === 'object') {
       store.dispatch(loadConfig(newConfig));
+      store.dispatch(checkDepartments(newConfig.companyId));
       ReactDOM.render(<MainContainer />, element);
     } else {
       console.error(`The given selector: ${config.place} doesn't exist!`);

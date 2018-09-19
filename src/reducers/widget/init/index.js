@@ -31,9 +31,10 @@ const init = (state = defaultState, action) => {
     {
       let newState = state;
 
-      const username = getFromComplexObject(action.payload.config, ['user', 'username']);
-      if (username !== null) {
-        newState = newState.set('username', username).set('givenUser', true);
+      const name = getFromComplexObject(action.payload.config, ['user', 'name']);
+      const surname = getFromComplexObject(action.payload.config, ['user', 'surname']);
+      if (name !== null && surname !== null) {
+        newState = newState.set('username', name+' '+surname).set('givenUser', true);
       }
 
       const avatar = getFromComplexObject(action.payload.config, ['user', 'avatar']);
