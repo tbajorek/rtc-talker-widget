@@ -10,7 +10,6 @@ import Widget from './containers/Widget';
 import defaultConfig from './default.config';
 import {checkDepartments} from "./actions/availability";
 
-const uuidv4 = require('uuid/v4');
 moment.locale('pl');
 
 // import registerServiceWorker from './registerServiceWorker';

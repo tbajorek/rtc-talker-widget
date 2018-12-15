@@ -120,7 +120,7 @@ export default store => next => (action) => {
         case CHOOSE_USER_SUCCESS:
             tbRtcClient = new TbRtcClient({
                 signaling: {
-                    server: __SIGNALING_SERVER_URL__,
+                    server: process.env.SIGNALING_SERVER_URL,
                     debug: {
                         recvMessages: true
                     }
