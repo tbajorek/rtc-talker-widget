@@ -2788,6 +2788,16 @@ domutils@^1.5.1:
     dom-serializer "0"
     domelementtype "1"
 
+dotenv-webpack@^1.5.7:
+  version "1.5.7"
+  resolved "https://registry.yarnpkg.com/dotenv-webpack/-/dotenv-webpack-1.5.7.tgz#c44395ab21d1fd28d79a90942a7b14b1debd145f"
+  dependencies:
+    dotenv "^5.0.1"
+
+dotenv@^5.0.1:
+  version "5.0.1"
+  resolved "http://registry.npmjs.org/dotenv/-/dotenv-5.0.1.tgz#a5317459bd3d79ab88cff6e44057a6a3fbb1fcef"
+
 draft-js@^0.10.0, draft-js@~0.10.0:
   version "0.10.5"
   resolved "https://registry.yarnpkg.com/draft-js/-/draft-js-0.10.5.tgz#bfa9beb018fe0533dbb08d6675c371a6b08fa742"
@@ -8809,9 +8819,9 @@ tar@^4:
     safe-buffer "^5.1.2"
     yallist "^3.0.2"
 
-tbrtc-client@^0.0.2:
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/tbrtc-client/-/tbrtc-client-0.0.2.tgz#88c10235672d960210222afa67f24a7ba966f787"
+tbrtc-client@^0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/tbrtc-client/-/tbrtc-client-0.0.3.tgz#5b9649e078d39383a0c4e2231351cfec8bf271a0"
   dependencies:
     app-root-path "^2.0.1"
     babel-core "^6.26.0"
