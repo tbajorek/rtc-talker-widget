@@ -35,7 +35,7 @@ export const checkDepartmentsFailure = (data) => {
 };
 
 export const checkDepartments = (companyId) => (dispatch, getState) => {
-    return Requester.get('/options/'+companyId, 200, {
+    return Requester.get('/options/'+companyId, 200, {companyId}, {
         request: checkDepartmentsRequest,
         success: checkDepartmentsSuccess,
         error: checkDepartmentsFailure
@@ -58,7 +58,7 @@ export const checkUsersFailure = (data) => {
 };
 
 export const checkRemoteUsers = (companyId, departmentId) => (dispatch, getState) => {
-    return Requester.get('/options/'+companyId+'/departments/'+departmentId, 200, {
+    return Requester.get('/options/'+companyId+'/departments/'+departmentId, 200, {companyId, departmentId}, {
         request: checkUsersRequest,
         success: checkUsersSuccess,
         error: checkUsersFailure
@@ -85,7 +85,7 @@ export const chooseUserFailure = (data) => {
 };
 
 export const chooseUser = (companyId, departmentId, type) => (dispatch, getState) => {
-    return Requester.get('/options/'+companyId+'/departments/'+departmentId+'/types/'+type, 200, {
+    return Requester.get('/options/'+companyId+'/departments/'+departmentId+'/types/'+type, 200, {companyId, departmentId, type}, {
         request: chooseUserRequest,
         success: chooseUserSuccess,
         error: chooseUserFailure

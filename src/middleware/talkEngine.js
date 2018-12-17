@@ -90,7 +90,6 @@ const initializeTbRTC = (store, tbRtc) => {
     });
 
     tbRtc.isP2pStateChange((data) => {
-        console.log('update p2p', data.state, data.state === 'completed');
         if(data.state === 'completed') {
             store.dispatch(setActiveTalk(true));
         } else if(!data.state || data.state === 'closed') {
@@ -146,7 +145,6 @@ export default store => next => (action) => {
                 const state = store.getState();
                 const user = getUser(state);
                 const userModel = new UserModel(user.id, user.name, user.surname, user.email, user.avatar);
-                console.log(state);
                 tbRtcClient.setCurrentUser(userModel);
                 let media;
                 switch (getCallType(state)) {

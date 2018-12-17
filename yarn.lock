@@ -1216,14 +1216,6 @@ babel-plugin-transform-strict-mode@^6.24.1:
     babel-runtime "^6.22.0"
     babel-types "^6.24.1"
 
-babel-polyfill@^6.26.0:
-  version "6.26.0"
-  resolved "https://registry.yarnpkg.com/babel-polyfill/-/babel-polyfill-6.26.0.tgz#379937abc67d7895970adc621f284cd966cf2153"
-  dependencies:
-    babel-runtime "^6.26.0"
-    core-js "^2.5.0"
-    regenerator-runtime "^0.10.5"
-
 babel-preset-env@^1.7.0:
   version "1.7.0"
   resolved "https://registry.yarnpkg.com/babel-preset-env/-/babel-preset-env-1.7.0.tgz#dea79fa4ebeb883cd35dab07e260c1c9c04df77a"
@@ -7866,10 +7858,6 @@ regenerate@^1.2.1:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/regenerate/-/regenerate-1.4.0.tgz#4a856ec4b56e4077c557589cae85e7a4c8869a11"
 
-regenerator-runtime@^0.10.5:
-  version "0.10.5"
-  resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.10.5.tgz#336c3efc1220adcedda2c9fab67b5a7955a33658"
-
 regenerator-runtime@^0.11.0, regenerator-runtime@^0.11.1:
   version "0.11.1"
   resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.11.1.tgz#be05ad7f9bf7d22e056f9726cee5017fbf19e2e9"
@@ -8819,9 +8807,9 @@ tar@^4:
     safe-buffer "^5.1.2"
     yallist "^3.0.2"
 
-tbrtc-client@^0.0.3:
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/tbrtc-client/-/tbrtc-client-0.0.3.tgz#5b9649e078d39383a0c4e2231351cfec8bf271a0"
+tbrtc-client@^0.0.8:
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/tbrtc-client/-/tbrtc-client-0.0.8.tgz#b12f4c6be446fdd32d3caf6dc028ee34b9bef70b"
   dependencies:
     app-root-path "^2.0.1"
     babel-core "^6.26.0"
@@ -8844,7 +8832,7 @@ tbrtc-client@^0.0.3:
     html-webpack-plugin "^2.30.1"
     react-a11y "^1.0.0"
     sdp-transform "^2.4.1"
-    tbrtc-common "^0.0.3"
+    tbrtc-common "^0.1.7"
     translations "^2.2.1"
     underscore "^1.8.3"
     uuid "^3.2.1"
@@ -8852,14 +8840,13 @@ tbrtc-client@^0.0.3:
     webrtc-adapter "^6.1.5"
     ws "^5.2.0"
 
-tbrtc-common@^0.0.3:
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/tbrtc-common/-/tbrtc-common-0.0.3.tgz#ab9c49188cb672035229c0309fb8d0e4aba5efc4"
+tbrtc-common@^0.1.7:
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/tbrtc-common/-/tbrtc-common-0.1.7.tgz#5038177b2b8ed4145e3687b569a34b2936e22e99"
   dependencies:
     app-root-path "^2.0.1"
     babel-loader "^7.1.4"
     babel-plugin-transform-builtin-extend "^1.1.2"
-    babel-polyfill "^6.26.0"
     babel-preset-es2017 "^6.24.1"
     bowser "^1.9.3"
     browser-detect "^0.2.22"
