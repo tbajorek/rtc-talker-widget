@@ -5,9 +5,6 @@
 .talker-chat-area .single-message:first-child {
   margin-top: 0;
 }
-.talker-chat-area .single-message .main {
-  display: flex;
-}
 .talker-chat-area .single-message .footer {
   display: flex;
 }
