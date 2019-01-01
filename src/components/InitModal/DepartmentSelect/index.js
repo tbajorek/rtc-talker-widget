@@ -11,7 +11,7 @@ const Option = Select.Option;
 const DepartmentSelect = ({
   departments, selectedDepartment, changeDepartment, validation,
 }) => {
-  const options = Object.entries(departments.toObject()).map(([id, name]) => <Option key={id} value={id}>{name}</Option>);
+  const options = ("toObject" in departments && typeof departments.toObject === 'function') ? Object.entries(departments.toObject()).map(([id, name]) => <Option key={id} value={id}>{name}</Option>) : [];
   const childProps = {
     showSearch: true,
     style: {
