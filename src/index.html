@@ -158,10 +158,11 @@
 <script src="<%= htmlWebpackPlugin.files.js[0] %>"></script>
 <script>
     const fromStorage = localStorage.getItem('widget-example');
+    let data;
     if(fromStorage !== null) {
-        const data = JSON.parse(fromStorage);
+        data = JSON.parse(fromStorage);
     } else {
-        const data = {
+        data = {
             companyId: '3d753167-fb69-4971-9a78-6c04d5e3de8b',
             user: {
                 name: 'John',
