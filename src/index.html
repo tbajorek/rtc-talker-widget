@@ -45,35 +45,6 @@
 
 <div class="container-fluid">
     <div class="row content">
-        <form>
-            <label>
-                Identyfikator firmy:
-                <input type="text" id="companyId"/>
-            </label>
-            <label>
-                Imię:
-                <input type="text" id="userName" />
-            </label>
-            <label>
-                Nazwisko:
-                <input type="text" id="userSurname" />
-            </label>
-            <label>
-                Avatar:
-                <input type="text" id="avatar" />
-            </label>
-            <span>
-                <h5>Rodzaj widgetu</h5>
-                <label>Kwadratowy
-                    <input type="radio" name="widgetType" id="sqareWidget" value="round" />
-                </label>
-                <label>Okrągły
-                    <input type="radio" name="widgetType" id="roundWidget" value="sqare" />
-                </label>
-            </span>
-        </form>
-    </div>
-    <div class="row content">
         <div class="col-sm-3 sidenav">
             <h4>Example Blog</h4>
             <ul class="nav nav-pills nav-stacked">
@@ -93,6 +64,36 @@
         </div>
 
         <div class="col-sm-9">
+            <div class="row">
+                <form>
+                    <label>
+                        Identyfikator firmy:
+                        <input type="text" id="companyId"/>
+                    </label>
+                    <label>
+                        Imię:
+                        <input type="text" id="userName" />
+                    </label>
+                    <label>
+                        Nazwisko:
+                        <input type="text" id="userSurname" />
+                    </label>
+                    <label>
+                        Avatar:
+                        <input type="text" id="avatar" />
+                    </label>
+                    <span>
+                <h5>Rodzaj widgetu</h5>
+                <label>Kwadratowy
+                    <input type="radio" name="widgetType" id="sqareWidget" value="round" />
+                </label>
+                <label>Okrągły
+                    <input type="radio" name="widgetType" id="roundWidget" value="sqare" />
+                </label>
+            </span>
+                </form>
+            </div>
+
             <h4><small>RECENT POSTS</small></h4>
             <hr>
             <h2>I Love Food</h2>
@@ -182,37 +183,37 @@
         localStorage.setItem('widget-example', JSON.stringify(data));
 
     };
-    document.getElementById('userName').value = data.companyId;
+    document.getElementById('userName').value = data.user.name;
     document.getElementById('userName').onchange = function (e) {
         data.user.name = e.target.value;
         localStorage.setItem('widget-example', JSON.stringify(data));
 
     };
-    document.getElementById('userSurname').value = data.companyId;
+    document.getElementById('userSurname').value = data.user.surname;
     document.getElementById('userSurname').onchange = function (e) {
         data.user.surname = e.target.value;
         localStorage.setItem('widget-example', JSON.stringify(data));
 
     };
-    document.getElementById('avatar').value = data.companyId;
+    document.getElementById('avatar').value = data.user.avatar;
     document.getElementById('avatar').onchange = function (e) {
         data.user.avatar = e.target.value;
         localStorage.setItem('widget-example', JSON.stringify(data));
 
     };
-    document.getElementById('sqareWidget').value = data.companyId;
+    document.getElementById('sqareWidget').setAttribute('checked', data.button.shape === 'square');
     document.getElementById('sqareWidget').onchange = function (e) {
-        data.user.avatar = e.target.value;
+        data.button.shape = e.target.value;
         localStorage.setItem('widget-example', JSON.stringify(data));
 
     };
-    document.getElementById('roundWidget').value = data.companyId;
+    document.getElementById('roundWidget').setAttribute('checked', data.button.shape === 'round');
     document.getElementById('roundWidget').onchange = function (e) {
-        data.user.avatar = e.target.value;
+        data.button.shape = e.target.value;
         localStorage.setItem('widget-example', JSON.stringify(data));
 
     };
-
+    // widget initialization
     RtcTalker.initWidget({
         place: '#widget',
         user: data.user,
