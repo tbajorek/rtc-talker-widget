@@ -196,13 +196,16 @@
     document.getElementById('givenUser').onchange = function (e) {
         if(data.user === null) {
             data.user = user;
+            document.getElementById('userName').removeAttribute('disabled');
+            document.getElementById('userSurname').removeAttribute('disabled');
+            document.getElementById('avatar').removeAttribute('disabled');
         } else {
             user = data.user;
             data.user = null;
+            document.getElementById('userName').setAttribute('disabled', true);
+            document.getElementById('userSurname').setAttribute('disabled', true);
+            document.getElementById('avatar').setAttribute('disabled', true);
         }
-        document.getElementById('userName').setAttribute('disabled', data.user === null);
-        document.getElementById('userSurname').setAttribute('disabled', data.user === null);
-        document.getElementById('avatar').setAttribute('disabled', data.user === null);
         localStorage.setItem('widget-example', JSON.stringify(data));
     };
     document.getElementById('userName').value = data.user.name;
