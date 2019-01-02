@@ -208,18 +208,19 @@
         }
         localStorage.setItem('widget-example', JSON.stringify(data));
     };
-    document.getElementById('userName').value = data.user.name;
+    document.getElementById('userName').value = ('name' in data.user) ? data.user.name : emptyUser.name;
     document.getElementById('userName').onchange = function (e) {
         data.user.name = e.target.value;
         localStorage.setItem('widget-example', JSON.stringify(data));
 
     };
-    document.getElementById('userSurname').value = data.user.surname;
+    document.getElementById('userSurname').value = ('surname' in data.user) ? data.user.surname : emptyUser.surname;
     document.getElementById('userSurname').onchange = function (e) {
         data.user.surname = e.target.value;
         localStorage.setItem('widget-example', JSON.stringify(data));
 
     };
+    document.getElementById('avatar').value = ('avatar' in data.user) ? data.user.avatar : emptyUser.avatar;
     document.getElementById('avatar').value = data.user.avatar;
     document.getElementById('avatar').onchange = function (e) {
         data.user.avatar = e.target.value;
