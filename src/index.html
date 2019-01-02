@@ -73,6 +73,9 @@
                         Identyfikator firmy:
                         <input type="text" id="companyId"/>
                     </label>
+                    <label>Użytkownik ze strony:
+                        <input type="checkbox" id="givenUser">
+                    </label>
                     <label>
                         Imię:
                         <input type="text" id="userName" />
@@ -164,21 +167,23 @@
 <script>
     const fromStorage = localStorage.getItem('widget-example');
     let data;
+    const emptyUser = {
+        name: 'John',
+        surname: 'Stone',
+        avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png'
+    };
     if(fromStorage !== null) {
         data = JSON.parse(fromStorage);
     } else {
         data = {
             companyId: '3d753167-fb69-4971-9a78-6c04d5e3de8b',
-            user: {
-                name: 'John',
-                surname: 'Stone',
-                avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png'
-            },
+            user: emptyUser,
             button: {
                 shape: 'square',
             }
         };
     }
+    let user = emptyUser;
     localStorage.setItem('widget-example', JSON.stringify(data));
 
     document.getElementById('companyId').value = data.companyId;
@@ -186,6 +191,19 @@
         data.companyId = e.target.value;
         localStorage.setItem('widget-example', JSON.stringify(data));
 
+    };
+    document.getElementById('givenUser').value = data.user !== null;
+    document.getElementById('givenUser').onchange = function (e) {
+        if(data.user === null) {
+            data.user = user;
+        } else {
+            user = data.user;
+            data.user = null;
+        }
+        document.getElementById('userName').setAttribute('disabled', data.user === null);
+        document.getElementById('userSurname').setAttribute('disabled', data.user === null);
+        document.getElementById('avatar').setAttribute('disabled', data.user === null);
+        localStorage.setItem('widget-example', JSON.stringify(data));
     };
     document.getElementById('userName').value = data.user.name;
     document.getElementById('userName').onchange = function (e) {
