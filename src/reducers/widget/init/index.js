@@ -47,10 +47,6 @@ const init = (state = defaultState, action) => {
         newState = newState.set('department', department);
       }
 
-      if (typeof action.payload.config.departments !== 'object' || !Object.keys(action.payload.config.departments).length) {
-        newState = newState.set('department', 0);
-      }
-
       return newState;
     }
     default:
