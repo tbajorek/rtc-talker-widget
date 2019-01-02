@@ -11,8 +11,7 @@ const Option = Select.Option;
 const DepartmentSelect = ({
   departments, selectedDepartment, changeDepartment, validation,
 }) => {
-  const departmentsToIterate = ("toObject" in departments && typeof departments.toObject === 'function') ? departments.toObject() : departments;
-  const options = Object.entries(departmentsToIterate).map(([id, name]) => <Option key={id} value={id}>{name}</Option>);
+  const options = departments.map(({id, name}) => <Option key={id} value={id}>{name}</Option>);
   const childProps = {
     showSearch: true,
     style: {
