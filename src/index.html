@@ -93,7 +93,7 @@
                 <label>Okrągły
                     <input type="radio" name="widgetType" id="roundWidget" value="round" />
                 </label>
-                <label><input type="button" value="Zatwierdź zmiany" /></label>
+                <label><input id="enterChanges" type="button" value="Zatwierdź zmiany" /></label>
             </span>
                 </form>
             </div>
@@ -217,6 +217,7 @@
         localStorage.setItem('widget-example', JSON.stringify(data));
 
     };
+
     const initializeWidget = function() {
         // widget initialization
         RtcTalker.initWidget({
@@ -228,6 +229,7 @@
         });
     };
     initializeWidget();
+    document.getElementById('enterChanges').onclick = initializeWidget;
 </script>
 
 </body>
