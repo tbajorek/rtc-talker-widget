@@ -221,7 +221,6 @@
 
     };
     document.getElementById('avatar').value = (data.user !== null && 'avatar' in data.user) ? data.user.avatar : emptyUser.avatar;
-    document.getElementById('avatar').value = data.user.avatar;
     document.getElementById('avatar').onchange = function (e) {
         data.user.avatar = e.target.value;
         localStorage.setItem('widget-example', JSON.stringify(data));
