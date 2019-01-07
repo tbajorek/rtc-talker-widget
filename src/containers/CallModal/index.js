@@ -16,8 +16,7 @@ import {
 } from '../../reducers/widget/call';
 import {isWidgetVisible} from '../../reducers/widget';
 import {getUsers} from '../../reducers/users';
-import {getMessageList, getMessageVisibility} from '../../reducers/messages';
-import {isActiveTalk} from "../../reducers/talk";
+import {getMessageList, getMessageVisibility, getUnreadMessagesNumber} from '../../reducers/messages';
 
 const mapStateToProps = state => ({
     callType: getCallType(state),
@@ -30,7 +29,7 @@ const mapStateToProps = state => ({
     messages: getMessageList(state),
     mutedAudio: isMutedAudio(state),
     mutedVideo: isMutedVideo(state),
-    activeTalk: isActiveTalk(state)
+    unreadMessages: getUnreadMessagesNumber(state)
 });
 
 const mapDispatchToProps = {

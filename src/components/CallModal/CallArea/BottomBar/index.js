@@ -1,26 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, Icon, Tooltip, Popconfirm } from 'antd';
 import VolumeControl from './VolumeControl';
 import './style.less';
+import EndCall from "./EndCall";
 
-const BottomBar = ({ finishTalk, ...props }) => (
+const BottomBar = ({ finishTalk, connecting, ...props }) => (
   <div className="talker-bottom">
-    <VolumeControl {...props} />
+    {!connecting ? <VolumeControl {...props} /> : null }
     <div className="talker-call-menu-bottom">
-      <Tooltip placement="bottom" title="Zakończ rozmowę">
-        <Popconfirm title="Czy chcesz zakończyć rozmowę?" onConfirm={finishTalk} okText="Tak" cancelText="Nie">
-          <Button className="end-call">
-            <Icon type="phone" className="end-call-icon" />
-          </Button>
-        </Popconfirm>
-      </Tooltip>
+      <EndCall finishTalk={finishTalk} connecting={connecting}/>
     </div>
   </div>
 );
 
 BottomBar.propTypes = {
     finishTalk: PropTypes.func.isRequired,
+    connecting: PropTypes.bool.isRequired,
 };
 
 export default BottomBar;

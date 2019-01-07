@@ -48,7 +48,7 @@ DepartmentSelect.defaultProps = {
 };
 
 DepartmentSelect.propTypes = {
-  departments: ImmutablePropTypes.map.isRequired,
+  departments: PropTypes.array.isRequired,
   selectedDepartment: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,

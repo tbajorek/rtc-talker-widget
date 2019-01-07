@@ -2,10 +2,11 @@ import {notification} from "antd";
 import TbRtcClient from 'tbrtc-client/src/modules/main/TbRtcClient';
 import {User as UserModel} from 'tbrtc-common/model/User';
 import {
+    breakCall,
     END_CALL,
     endCall,
     rejectedCall,
-    SET_CONNECTING,
+    SET_CONNECTING, SET_WRITTEN_MESSAGE,
     setConnecting,
     setInitializingCall
 } from "../actions/widget/call";
@@ -22,12 +23,12 @@ import {
     SET_FILE_INPUT,
     SET_SESSION_ID,
     SET_VIDEO,
-    setActiveTalk,
+    setActiveTalk, setBrokenTalk,
     setSessionId,
     START_SELECTING_FILES
 } from "../actions/talk";
-import {addMessageToList} from "../actions/message";
-import {getSessionId, isFinishing} from "../reducers/talk";
+import {addMessageToList, SEND_MESSAGE} from "../actions/message";
+import {getSessionId, hasFileInput, isBrokenTalk, isFinishing} from "../reducers/talk";
 import { updateFileNotification } from '../utilities/fileNotification';
 import {getWidgetState} from "../reducers/widget";
 import {loadConfig, reloadConfig} from "../actions/config";
@@ -39,7 +40,9 @@ const initializeTbRTC = (store, tbRtc) => {
         const state = store.getState();
         tbRtc.sendDataToUser({
             task: "session.create.request",
-            type: getCallType(state)
+            type: getCallType(state),
+            domain: location.host,
+            siteUrl: location.href
         }, getReceiver(state).id);
     });
 
@@ -78,9 +81,10 @@ const initializeTbRTC = (store, tbRtc) => {
     tbRtc.isSessionUserLeft(data => {
         if(isFinishing(store.getState())) {
             Messages.success("Sukces", `Rozmowa z użytkownikiem zakończyła się`);
-            store.dispatch(endTalk());
+        } else{
+            Messages.error("Błąd", `Rozmowa została przerwana przez zdalnego użytkownika`);
+            store.dispatch(setBrokenTalk());
         }
-        Messages.error("Błąd", `Rozmowa została przerwana przez zdalnego użytkownika`);
         store.dispatch(endCall());
     });
 
@@ -100,6 +104,10 @@ const initializeTbRTC = (store, tbRtc) => {
     tbRtc.isSessionClosed(() => {
         if(isFinishing(store.getState())) {
             Messages.success("Sukces", `Rozmowa z użytkownikiem zakończyła się`);
+        } else if(!isBrokenTalk(store.getState())) {
+            Messages.warning("Uwaga", `Rozmowa została przerwana`);
+        }
+        if(!isBrokenTalk(store.getState())) {
             store.dispatch(endCall());
         }
         tbRtc.disconnect();
@@ -134,7 +142,10 @@ export default store => next => (action) => {
                     ]
                 },
                 autoBindingMedia: false,
-                debug: true
+                debug: true,
+                filesConfig: {
+                    hideInput: true
+                }
             });
             initializeTbRTC(store, tbRtcClient);
             tbRtcClient.isInitialized(() => {
@@ -193,7 +204,7 @@ export default store => next => (action) => {
             break;
         case FINISH_TALK: {
             const result = next(action);
-            if(tbRtcClient !== null) {
+            if(tbRtcClient !== null && !isConnecting(store.getState())) {
                 const state = store.getState();
                 tbRtc.sendDataToUser({
                     task: "session.close.request"
@@ -202,7 +213,7 @@ export default store => next => (action) => {
             return result;
         }
         case SET_FILE_INPUT:
-            if (tbRtcClient !== null) {
+            if (tbRtcClient !== null && !hasFileInput(store.getState())) {
                 tbRtcClient.addFileInput(action.payload.fileInput);
             }
             break;
@@ -222,6 +233,11 @@ export default store => next => (action) => {
                 } else {
                     tbRtcClient.disconnect();
                 }
+            }
+            break;
+        case SEND_MESSAGE:
+            if (tbRtcClient !== null) {
+                tbRtcClient.sendChatMessage(action.payload.content);
             }
             break;
     }

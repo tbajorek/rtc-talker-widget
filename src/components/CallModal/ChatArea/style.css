@@ -4,4 +4,7 @@
   min-width: 310px;
   min-height: 420px;
 }
+.talker-call-modal .talker-chat-area.hidden {
+  display: none;
+}
 /*# sourceMappingURL=style.css.map */

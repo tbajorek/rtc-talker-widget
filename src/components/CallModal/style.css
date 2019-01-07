@@ -1,6 +1,9 @@
 .talker-call-modal {
   display: flex;
 }
+.talker-call-modal.hidden {
+  display: none;
+}
 .talker-call-modal .rtc-talker-call-modal {
   width: auto !important;
   margin: auto;

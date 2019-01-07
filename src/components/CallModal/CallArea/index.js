@@ -6,18 +6,17 @@ import MainPart from './MainPart';
 import BottomBar from './BottomBar';
 
 import './style.less';
-import {finishTalk} from "../../../actions/talk";
 
 const CallArea = ({
-                      callType, receiver, connecting, activeTalk, messagesShown, toggleMessageBox, volume, mutedAudio, mutedVideo,
-                      setVolume, setMuteAudio, setMuteVideo, finishTalk, setVideo
+                      callType, receiver, connecting, messagesShown, toggleMessageBox, volume, unreadMessages,
+                      mutedAudio, mutedVideo, setVolume, setMuteAudio, setMuteVideo, finishTalk, setVideo
                   }) => (
     <div className="talker-call-area">
-        <TopBar messagesShown={messagesShown} toggleMessageBox={toggleMessageBox} connecting={connecting}/>
+        <TopBar messagesShown={messagesShown} toggleMessageBox={toggleMessageBox} connecting={connecting} unreadMessages={unreadMessages}/>
         <MainPart callType={callType} connecting={connecting} mutedVideo={mutedVideo} receiver={receiver} mutedAudio={mutedAudio} setVideo={setVideo} />
-        <BottomBar callType={callType} volume={volume} mutedAudio={mutedAudio} mutedVideo={mutedVideo}
+        <BottomBar callType={callType} connecting={connecting} volume={volume} mutedAudio={mutedAudio} mutedVideo={mutedVideo}
                    changeVolume={setVolume} changeMuteAudio={setMuteAudio} changeMuteVideo={setMuteVideo}
-                   finishTalk={() => finishTalk(activeTalk)}/>
+                   finishTalk={() => finishTalk(connecting)} />
     </div>
 );
 
@@ -29,7 +28,6 @@ CallArea.propTypes = {
         avatar: PropTypes.string
     }),
     connecting: PropTypes.bool.isRequired,
-    activeTalk: PropTypes.bool.isRequired,
     messagesShown: PropTypes.bool.isRequired,
     toggleMessageBox: PropTypes.func.isRequired,
     volume: PropTypes.number.isRequired,
@@ -40,6 +38,7 @@ CallArea.propTypes = {
     setMuteVideo: PropTypes.func.isRequired,
     finishTalk: PropTypes.func.isRequired,
     setVideo: PropTypes.func.isRequired,
+    unreadMessages: PropTypes.number.isRequired
 };
 
 export default CallArea;

@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ImmutablePropTypes from 'react-immutable-proptypes';
 import ReactHtmlParser from 'react-html-parser';
 import emotes from 'emote-icons';
 import 'emote-icons/src/emote-icons-sm.css';
@@ -14,19 +13,19 @@ const MessageContent = ({
   const parsedContent = ReactHtmlParser(emotes(content));
   let message;
   if (type === 'outgoing') {
-    message = (
-      <div className="main">
-        <MessageAvatar user={author} />
-          <div className={className}>{parsedContent}</div>
-      </div>
-    );
+      message = (
+          <div className="main">
+              <div className={className}>{parsedContent}</div>
+              <MessageAvatar user={author} />
+          </div>
+      );
   } else {
-    message = (
-      <div className="main">
-        <div className={className}>{parsedContent}</div>
-        <MessageAvatar user={author} />
-      </div>
-    );
+      message = (
+          <div className="main">
+              <MessageAvatar user={author} />
+              <div className={className}>{parsedContent}</div>
+          </div>
+      );
   }
   return message;
 };

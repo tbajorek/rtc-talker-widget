@@ -11,7 +11,7 @@ const MainPart = ({
     <div className="talker-centered-part">
         {connecting || mutedVideo || callType !== 'video' ?
             <ReceiverAvatar user={receiver} descriptionVisible={connecting} descriptionText="Łączenie..."/> : null}
-            <MediaContainer connecting={connecting} callType={callType} mutedVideo={mutedVideo} mutedAudio={mutedAudio} setVideo={setVideo} />
+        { !connecting ? <MediaContainer connecting={connecting} callType={callType} mutedVideo={mutedVideo} mutedAudio={mutedAudio} setVideo={setVideo} /> : null }
     </div>
 );
 

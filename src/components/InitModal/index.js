@@ -53,7 +53,7 @@ InitModal.propTypes = {
   selectedDepartment: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-  ]).isRequired,
+  ]),
   channels: PropTypes.array.isRequired,
   departments: PropTypes.array.isRequired,
   usernameValidation: PropTypes.bool.isRequired,

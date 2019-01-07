@@ -9,8 +9,8 @@ import './style.less';
 import {finishTalk} from "../../actions/talk";
 
 const CallModal = ({
-                       callType, visible, activeTalk, users, messagesShown, connecting, volume, writtenMessage, messages, mutedAudio, mutedVideo,
-                       setVolume, setMessagesVisibility, setWrittenMessage, setVisible, setMuteAudio, setMuteVideo, sendMessage, finishTalk, breakRequest, setVideo,
+                       callType, visible, users, messagesShown, connecting, volume, writtenMessage, messages, mutedAudio, mutedVideo, unreadMessages,
+                       setVolume, setMessagesVisibility, setWrittenMessage, setVisible, setMuteAudio, setMuteVideo, sendMessage, finishTalk, setVideo,
                        setFileInput, startSelectingFiles
                    }) => (
     <Modal
@@ -21,20 +21,17 @@ const CallModal = ({
         footer={null}
         wrapClassName="talker-call-modal"
     >
-        {
-            visible ?
-                <div className="talker-call-modal-body">
-                    {['video', 'audio'].indexOf(callType) >= 0 ?
-                        <CallArea callType={callType} receiver={users.receiver} messagesShown={messagesShown}
-                                  toggleMessageBox={setMessagesVisibility} connecting={connecting} volume={volume}
-                                  setVolume={setVolume} activeTalk={activeTalk} mutedAudio={mutedAudio} mutedVideo={mutedVideo}
-                                  setMuteAudio={setMuteAudio} setMuteVideo={setMuteVideo} finishTalk={finishTalk}
-                                  setVideo={setVideo}/> : null}
-                    {messagesShown || callType === 'chat' ?
-                        <ChatArea users={users} writtenMessage={writtenMessage} changeMessage={setWrittenMessage}
-                                  messages={messages} sendMessage={sendMessage} setFileInput={setFileInput} startSelectingFiles={startSelectingFiles} /> : null}
-                </div> : null
-        }
+        <div className={`talker-call-modal-body${visible ? '' : ' hidden'}`}>
+            {['video', 'audio'].indexOf(callType) >= 0 || connecting ?
+                <CallArea callType={callType} receiver={users.receiver} messagesShown={messagesShown} unreadMessages={unreadMessages}
+                          toggleMessageBox={setMessagesVisibility} connecting={connecting} volume={volume}
+                          setVolume={setVolume} mutedAudio={mutedAudio} mutedVideo={mutedVideo}
+                          setMuteAudio={setMuteAudio} setMuteVideo={setMuteVideo} finishTalk={finishTalk}
+                          setVideo={setVideo}/> : null}
+                <ChatArea connecting={connecting} messagesShown={messagesShown} callType={callType} users={users}
+                          writtenMessage={writtenMessage} changeMessage={setWrittenMessage} messages={messages} finishTalk={finishTalk}
+                          sendMessage={sendMessage} setFileInput={setFileInput} startSelectingFiles={startSelectingFiles} />
+        </div>
     </Modal>
 );
 
@@ -50,7 +47,6 @@ CallModal.propTypes = {
     volume: PropTypes.number.isRequired,
     writtenMessage: PropTypes.string.isRequired,
     messages: ImmutablePropTypes.orderedSet.isRequired,
-    activeTalk: PropTypes.bool.isRequired,
     mutedAudio: PropTypes.bool.isRequired,
     mutedVideo: PropTypes.bool.isRequired,
     setVolume: PropTypes.func.isRequired,
@@ -64,6 +60,7 @@ CallModal.propTypes = {
     setVideo: PropTypes.func.isRequired,
     setFileInput: PropTypes.func.isRequired,
     startSelectingFiles: PropTypes.func.isRequired,
+    unreadMessages: PropTypes.number.isRequired,
 };
 
 export default CallModal;

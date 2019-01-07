@@ -1,6 +1,6 @@
 import { Map } from 'immutable';
 
-import { SET_ICON, SET_COLOR, SET_BACKGROUND_COLOR, SET_SHAPE, SET_NOTIFY_NUMBER } from '../../../actions/widget/button/index';
+import { SET_ICON, SET_COLOR, SET_BACKGROUND_COLOR, SET_SHAPE, SHOW_INDICATOR } from '../../../actions/widget/button/index';
 import { LOAD_CONFIG } from '../../../actions/config/index';
 import getFromComplexObject from '../../../utilities/getFromComplexObject';
 
@@ -9,7 +9,7 @@ const defaultState = Map({
   color: 'rgb(255, 239, 206)',
   backgroundColor: 'rgb(216, 68, 9)',
   shape: 'circle',
-  notifyNumber: 0,
+  showIndicator: false,
 });
 
 const button = (state = defaultState, action) => {
@@ -22,8 +22,8 @@ const button = (state = defaultState, action) => {
       return state.set('backgroundColor', action.payload.backgroundColor);
     case SET_SHAPE:
       return state.set('shape', action.payload.shape);
-    case SET_NOTIFY_NUMBER:
-      return state.set('notifyNumber', action.payload.notifyNumber);
+    case SHOW_INDICATOR:
+      return state.set('showIndicator', action.payload.showIndicator);
     case LOAD_CONFIG:
       let newState = state;
 
@@ -46,6 +46,8 @@ const button = (state = defaultState, action) => {
       if (shape !== null) {
         newState = newState.set('shape', shape);
       }
+
+      newState.set('showIndicator', false);
       return newState;
     default:
       return state;
@@ -58,4 +60,4 @@ export const getIcon = state => state.widget.button.get('icon');
 export const getColor = state => state.widget.button.get('color');
 export const getBackgroundColor = state => state.widget.button.get('backgroundColor');
 export const getShape = state => state.widget.button.get('shape');
-export const getNotifyNumber = state => state.widget.button.get('notifyNumber');
+export const isShownIndicator = state => state.widget.button.get('showIndicator');

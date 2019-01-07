@@ -1,17 +1,32 @@
-.rtc-talker-init-button .ant-avatar {
-  z-index: 100;
+.rtc-talker-init-button {
   position: fixed;
-  cursor: pointer;
-  border: 2px solid #FFFFE0;
-  box-shadow: 0 3px 12px 2px rgba(0, 0, 0, 0.29);
+  z-index: 100;
   display: flex;
   align-items: center;
   justify-content: center;
   right: 20px;
   bottom: 16px;
 }
-.rtc-talker-init-button .ant-avatar.ant-avatar-lg > * {
+.rtc-talker-init-button .ant-avatar {
+  cursor: pointer;
+  border: 2px solid #FFFFE0;
+  box-shadow: 0 3px 12px 2px rgba(0, 0, 0, 0.29);
+}
+.rtc-talker-init-button .ant-avatar .ant-avatar-lg > * {
   line-height: 80px;
   font-size: 30px;
+}
+.rtc-talker-init-button .ant-badge-dot {
+  transform: none;
+  background: #0c9dbc;
+  -webkit-animation: none !important;
+  -o-animation: none !important;
+  animation: none !important;
+  width: 12px;
+  height: 12px;
+}
+body {
+  padding: 0 !important;
+  overflow: auto !important;
 }
 /*# sourceMappingURL=style.css.map */

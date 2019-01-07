@@ -32,6 +32,13 @@ export const endCall = () => (dispatch) => {
     dispatch(createAction(END_CALL)(null));
     dispatch(setState('rate'));
 };
+
+export const breakCall = () => dispatch => {
+    dispatch(createAction(END_CALL)(null));
+    dispatch(setVisible(false));
+    dispatch(setState('init'));
+};
+
 export const setInitializingCall = initializing => createAction(SET_INITIALIZING_CALL)({ initializing });
 export const setConnecting = connecting => createAction(SET_CONNECTING)({ connecting });
 export const setVolume = volume => createAction(SET_VOLUME)({ volume });

@@ -5,6 +5,7 @@ import { resetRate } from './rate';
 import { resetMessages } from '../message';
 import { resetCall } from './call';
 import {reloadConfig} from "../config";
+import {showIndicator} from "./button";
 
 export const SET_STATE = 'SET_STATE';
 export const SET_VISIBLE = 'SET_VISIBLE';
@@ -19,4 +20,7 @@ export const setState = state => (dispatch) => {
     dispatch(reloadConfig());
   }
 };
-export const setVisible = visible => createAction(SET_VISIBLE)({ visible });
+export const setVisible = visible => (dispatch) => {
+  dispatch(createAction(SET_VISIBLE)({ visible }));
+  dispatch(showIndicator(!visible));
+};

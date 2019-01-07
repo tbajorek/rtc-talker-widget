@@ -4,11 +4,11 @@ import {Avatar, Badge} from 'antd';
 import './style.less';
 
 const FlowingButton = ({
-                           icon, color, backgroundColor, notifyNumber, shape, setVisible, isInitializing, availableDepartments
+                           icon, color, backgroundColor, showIndicator, shape, setVisible, isInitializing, availableDepartments
                        }) => (
     <React.Fragment>
         {availableDepartments ? <div className="rtc-talker-init-button">
-            <Badge count={notifyNumber} onClick={() => setVisible(true)}>
+            <Badge dot={showIndicator} onClick={() => setVisible(true)}>
                 <Avatar style={{color, backgroundColor}} shape={shape} size={60}
                         icon={isInitializing ? 'loading' : icon}/>
             </Badge>
@@ -29,7 +29,7 @@ FlowingButton.propTypes = {
     color: PropTypes.string,
     backgroundColor: PropTypes.string,
     shape: PropTypes.oneOf(['circle', 'square']),
-    notifyNumber: PropTypes.number,
+    showIndicator: PropTypes.bool,
     setVisible: PropTypes.func.isRequired,
 };
 

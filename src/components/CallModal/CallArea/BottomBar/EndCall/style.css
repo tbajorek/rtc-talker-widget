@@ -1,0 +1,31 @@
+.talker-call-menu-bottom,
+.talker-chat-area {
+  display: flex;
+  width: 100%;
+  height: 35px;
+}
+.talker-call-menu-bottom .end-call,
+.talker-chat-area .end-call {
+  width: 100%;
+  margin-top: 3px;
+  background: linear-gradient(#f33, #b10000);
+  border-radius: 0px;
+  color: #F0FFFF;
+  border-color: #F0FFFF;
+}
+.talker-call-menu-bottom .end-call:hover,
+.talker-chat-area .end-call:hover {
+  color: #fff4e0;
+  border-color: #fff4e0;
+}
+.talker-call-menu-bottom .end-call .anticon,
+.talker-chat-area .end-call .anticon {
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 34px;
+}
+.talker-call-menu-bottom .end-call-icon,
+.talker-chat-area .end-call-icon {
+  transform: rotate(225deg);
+}
+/*# sourceMappingURL=style.css.map */
