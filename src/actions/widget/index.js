@@ -1,4 +1,4 @@
-import { createAction } from 'redux-actions';
+import ActionCreator from "tbrtc-common/utilities/ActionCreator";
 
 import { resetUsers } from '../users';
 import { resetRate } from './rate';
@@ -11,7 +11,7 @@ export const SET_STATE = 'SET_STATE';
 export const SET_VISIBLE = 'SET_VISIBLE';
 
 export const setState = state => (dispatch) => {
-  dispatch(createAction(SET_STATE)({ state }));
+  dispatch(ActionCreator.createAction(SET_STATE, { state }));
   if (state === 'init') {
     dispatch(resetUsers());
     dispatch(resetRate());
@@ -21,6 +21,6 @@ export const setState = state => (dispatch) => {
   }
 };
 export const setVisible = visible => (dispatch) => {
-  dispatch(createAction(SET_VISIBLE)({ visible }));
+  dispatch(ActionCreator.createAction(SET_VISIBLE, { visible }));
   dispatch(showIndicator(!visible));
 };

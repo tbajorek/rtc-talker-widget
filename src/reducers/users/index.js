@@ -22,6 +22,7 @@ const users = (state = defaultState, action) => {
       case SET_USER_ID:
           return {...state, user: {...state.user, id: action.payload.userId}};
       case SET_RECEIVER:
+          return {...state, receiver: {...action.payload.receiver}};
       case CHOOSE_USER_SUCCESS:
         return {...state, receiver: {...action.payload.user}};
       case RESET_USERS:

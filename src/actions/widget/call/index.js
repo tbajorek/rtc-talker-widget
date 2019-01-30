@@ -1,4 +1,4 @@
-import { createAction } from 'redux-actions';
+import ActionCreator from "tbrtc-common/utilities/ActionCreator";
 
 import { setState, setVisible } from '../index';
 import { setUsernameValidation, setDepartmentValidation } from '../init';
@@ -14,7 +14,7 @@ export const END_CALL = 'END_CALL';
 export const RESET_CALL = 'RESET_CALL';
 
 export const setCallType = type => (dispatch) => {
-  dispatch(createAction(SET_CALL_TYPE)({ type }));
+  dispatch(ActionCreator.createAction(SET_CALL_TYPE, { type }));
   if (['video', 'audio'].indexOf(type) >= 0) {
     dispatch(setState('call-initializing'));
   } else {
@@ -23,29 +23,29 @@ export const setCallType = type => (dispatch) => {
 };
 
 export const rejectedCall = () => dispatch => {
-    dispatch(createAction(END_CALL)(null));
+    dispatch(ActionCreator.createAction(END_CALL));
     dispatch(setVisible(false));
     dispatch(setState('init'));
 };
 
 export const endCall = () => (dispatch) => {
-    dispatch(createAction(END_CALL)(null));
+    dispatch(ActionCreator.createAction(END_CALL));
     dispatch(setState('rate'));
 };
 
 export const breakCall = () => dispatch => {
-    dispatch(createAction(END_CALL)(null));
+    dispatch(ActionCreator.createAction(END_CALL));
     dispatch(setVisible(false));
     dispatch(setState('init'));
 };
 
-export const setInitializingCall = initializing => createAction(SET_INITIALIZING_CALL)({ initializing });
-export const setConnecting = connecting => createAction(SET_CONNECTING)({ connecting });
-export const setVolume = volume => createAction(SET_VOLUME)({ volume });
-export const setWrittenMessage = writtenMessage => createAction(SET_WRITTEN_MESSAGE)({ writtenMessage });
-export const setMuteAudio = muted => createAction(SET_MUTE_AUDIO)({ muted });
-export const setMuteVideo = muted => createAction(SET_MUTE_VIDEO)({ muted });
-export const resetCall = () => createAction(RESET_CALL)({});
+export const setInitializingCall = initializing => ActionCreator.createAction(SET_INITIALIZING_CALL, { initializing });
+export const setConnecting = connecting => ActionCreator.createAction(SET_CONNECTING, { connecting });
+export const setVolume = volume => ActionCreator.createAction(SET_VOLUME, { volume });
+export const setWrittenMessage = writtenMessage => ActionCreator.createAction(SET_WRITTEN_MESSAGE, { writtenMessage });
+export const setMuteAudio = muted => ActionCreator.createAction(SET_MUTE_AUDIO, { muted });
+export const setMuteVideo = muted => ActionCreator.createAction(SET_MUTE_VIDEO, { muted });
+export const resetCall = () => ActionCreator.createAction(RESET_CALL);
 
 export const startCall = (type, username, department) => (dispatch) => {
   const validUsername = (!!username && username.length !== 0 && username.trim().length !== 0);

@@ -29,7 +29,7 @@ const talk = (state = defaultState, action) => {
             newVideo[action.payload.type] = action.payload.element;
             return {...state, video: newVideo};
         case SET_INITIALIZING_CALL:
-            if(!action.payload.initialized) {
+            if(!action.payload.initializing) {
                 return {...state, finishing: false};
             }
             break;
