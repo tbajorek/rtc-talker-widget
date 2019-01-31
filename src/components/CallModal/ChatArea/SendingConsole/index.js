@@ -27,7 +27,7 @@ class SendingConsole extends React.Component {
                 <div className="sending-console">
                     <Options startSelectingFiles={() => startSelectingFiles('fileInput')}/>
                     <TextArea value={writtenMessage} placeholder="Napisz wiadomość..."
-                              onChange={e => changeMessage(e.target.value)} autosize={{minRows: 1, maxRows: 4}}
+                              onChange={e => changeMessage(e.target.value.replace(/<[^>]*>?/g, ''))} autosize={{minRows: 1, maxRows: 4}}
                               onPressEnter={sendMessage}/>
                     <div className="input-suffix">
                         <Tooltip title="Wyślij wiadomość">
